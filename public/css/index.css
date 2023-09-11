@@ -1,0 +1,43 @@
+.container {
+  position: relative;
+}
+
+.rest {
+  display: block;
+  width: 80%;
+  opacity: 85%;
+  height: 100%;
+  margin-left: 10%;
+}
+
+.container img {
+  width: 1525px;
+}
+
+.container .btn {
+  position: absolute;
+  top: 95%;
+  font-size: 40px;
+  color: white;
+  background-color: gray;
+  border: none;
+  cursor: pointer;
+  border-radius: 10px;
+}
+
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+
+p {
+  font-size: 50px;
+  text-align: center;
+  color: white;
+}
+
+/* p a {
+  text-decoration-line: none;
+} */

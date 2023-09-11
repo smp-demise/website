@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('includes/head.ejs') %>
+  <head>
+    <link rel="stylesheet" href="css/players.css">
+  </head>
+<body>
+  <div class="content">
+    <select id="select">
+      <% for (let i = 0; i < seasons.length; i++) { %>
+        <option>Season <%- i+1 %></option>
+      <% } %>
+    </select>
+    <p><span style="color: red;">red</span> names mean that the person is currently dead</p>
+    <table style="width: fit-content; margin-left: 2%; margin-top: 2%;">
+      <thead>
+        <tr>
+          <th>Player</th>
+          <th>|</th>
+          <th>Bio</th>
+        </tr>
+      </thead>
+      <tbody id="body">
+        <% for (let i = 0; i < seasons.length; i++) { %>
+          <% Object.entries(seasons[i].players).forEach(player => { %>
+            <% if (i == 0) { %>
+            <tr id="<%- i %>">
+            <% } else { %>
+            <tr id="<%- i %>" style="display: none;">
+            <% } %>
+            <% if(seasons[i].players[player[0]].dead) { %>
+            <td style="color: red;"><%- player[0] %></td>
+            <% } else { %>
+            <td><%- player[0] %></td>
+            <% } %>
+            <td>|</td>
+            <td style="margin-left: 10px;"><%- seasons[i].players[player[0]].bio %></td>
+            </tr>
+          <% }) %>
+          </tr>
+        <% } %>
+      </tbody>
+    </table>
+  </div>
+
+  <script>
+    const select = document.getElementById('select');
+    const body = document.getElementById('body');
+
+    select.addEventListener('change', () => {
+      const index = select.selectedIndex;
+      for(let i = 0; i < body.children.length; i++) {
+        if(Number(body.children[i].id) !== index) body.children[i].style.display = 'none';
+        else body.children[i].style.display = '';
+      }
+    })
+  </script>
+</body>
+</html>
